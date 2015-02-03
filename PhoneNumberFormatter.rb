@@ -1,26 +1,35 @@
 require 'pry'
 
-x = "1234567890"
-y = 1234567890
 
 
-x.insert(3, "-")
-x.insert(7, "-")
-puts x
+class PhoneNumberFormatter
+  
+  def initialize(x)
+    @number = x.to_s
+  end
 
-x = y.to_s
-x.insert(0, "(")
-x.insert(4, ")")
-x.insert(8, "-")
-puts x
+  def add_dashes
+    @number.insert(3, "-")
+    @number.insert(7, "-")
+    puts @number
+  end
 
-x = "1234567890"
-area_code = x.byteslice(0, 3)
-prefix = x.byteslice(3, 3)
-suffix = x.byteslice(6, 4)
-puts area_code
-puts prefix
-puts suffix
+  def area_code_dashes
+    @number.insert(0, "(")
+    @number.insert(4, ")")
+    @number.insert(5, " ")
+    @number.insert(9, "-")
+    puts @number
+  end
 
-puts "(#{area_code}) #{prefix}-#{suffix}"
-#binding.pry
+  def area_code_dashes_alt
+    area_code = @number.byteslice(0, 3)
+    prefix = @number.byteslice(3, 3)
+    suffix = @number.byteslice(6, 4)
+
+    puts "(#{area_code}) #{prefix}-#{suffix}"
+  end
+
+end #class
+
+binding.pry
