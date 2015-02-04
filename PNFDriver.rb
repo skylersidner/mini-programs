@@ -2,7 +2,6 @@ require 'pry'
 require_relative 'PhoneNumberFormatter'
 
 
-
 puts "Welcome to the Phone Number Formatter!"
 puts "With this tool, we can take any 10-digit phone number and make it prettier."
 puts "Would you like to like to input your own number, or use the default?"
@@ -32,3 +31,4 @@ if choice == 1
 else
   puts "The formatted version is #{pnf.area_code_dashes}."
 end
+
