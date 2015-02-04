@@ -29,33 +29,37 @@ class WordConnector
   
   def initialize(array)
     @array = array
+    
   end
 
   # Public: #word_connector
   #
-  # Converts an array into a list of its contents.
+  # Converts an array into a string list of its contents.
   #
   # Parameters: None.
   #
-  # Returns: nil
+  # Returns: 
+  # format_string
   #
-  # State Changes: None.
+  # State Changes: 
+  # format_string becomes a correctly formatted output string.
 
+
+  
   def connect
-    y = @array.pop
-    final = (
-      @array.each do |x|
-      if @array.length > 1
-        print "#{x}, "
-      else
-        print "#{x} "
-      end #if
-    end #each
-    print "and #{y}."
-    )
-    puts final
+    format_string = @array.pop
+    if @array.length > 1
+      format_string.prepend(", and ")
+    else
+      format_string.prepend(" and ")
+    end #if
+    until @array.length == 1
+      format_string.prepend(", #{@array.pop}")
+    end #until
+    format_string.prepend("#{@array.pop}")
+    format_string
   end #method
   
 end #class
 
-binding.pry
+# binding.pry

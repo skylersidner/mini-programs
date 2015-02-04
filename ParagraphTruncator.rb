@@ -1,8 +1,53 @@
-para = "Lorem ipsum dolor sit amet, culpa penatibus aliquam molestie sed, rhoncus erat justo ut vitae lectus ante, dui rutrum ea sit suscipit arcu suspendisse. Nunc et fusce dapibus maecenas ac, massa tellus nec, rutrum nulla neque mauris aliquam id, mauris non a proin eu turpis, wisi molestias eget. Ultrices velit sed quam mi pellentesque, nullam sit mauris vel arcu ante elit, adipiscing urna eleifend porttitor vestibulum nonummy libero, dolor nunc mollis sit lacus fringilla, consequat hac amet gravida ipsum pharetra mollis. Vestibulum pede arcu donec cras ipsum, ligula eros aliquet tellus, mi ut donec sed volutpat. Erat sodales elit maecenas, nunc arcu dis id."
 
-x = 30
-y = "...Read More"
+# Class: ParagraphTruncator
+#
+# Cuts off a paragraph that is too long and adds "...Read More".
+#
+# Attributes:
+# @para         - String: A paragraph of at least 30 characters.
+# @format_para  - String: The formatted version of @para
+#
+# Public Methods:
+# #truncate
 
-if para.length > x
-  puts "#{para.byteslice(0, x)}#{y}"
-end
+class ParagraphTruncator
+
+  # Public: #initialize
+  #
+  # Creates an instance of the ParagraphTruncator object.
+  #
+  # Parameters: 
+  # paragraph - String: A paragraph of at least 30 characters.
+  # 
+  # Returns: 
+  # A ParagraphTruncator object.
+  #
+  # State Changes: 
+  # @para becomes the paragraph string.
+  
+  def initialize(paragraph)
+    @para = paragraph
+    @format_para = ""
+  end
+
+  # Public: #truncate
+  #
+  # Cuts off a paragraph that is too long and adds "...Read More".
+  #
+  # Parameters: None
+  #
+  # Returns: 
+  # format_para; if @para is too short, it simply returns @para
+  #
+  # State Changes: 
+  # @format_para becomes a much shorter version of @para, with "...Read More" appended.
+
+  def truncate
+    if @para.length > 30
+      @format_para = @para.byteslice(0, 30) + "...Read More"
+    else
+      @para
+    end
+  end #method
+
+end #class
