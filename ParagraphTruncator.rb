@@ -1,3 +1,6 @@
+require 'pry'
+require 'active_support'
+require 'active_support/core_ext/string/filters'
 
 # Class: ParagraphTruncator
 #
@@ -37,17 +40,20 @@ class ParagraphTruncator
   # Parameters: None
   #
   # Returns: 
-  # format_para; if @para is too short, it simply returns @para
+  # @para, truncated.
   #
-  # State Changes: 
-  # @format_para becomes a much shorter version of @para, with "...Read More" appended.
+  # State Changes: None.
 
   def truncate
-    if @para.length > 30
-      @format_para = @para.byteslice(0, 30) + "...Read More"
-    else
-      @para
-    end
-  end #method
+    @para.truncate_words(4, omission: "...Read More")
+  end
+
+  # def truncate
+  #   if @para.length > 30
+  #     @format_para = @para.byteslice(0, 30) + "...Read More"
+  #   else
+  #     @para
+  #   end
+  # end #method
 
 end #class

@@ -1,4 +1,6 @@
 require 'pry'
+require 'active_support'
+require 'active_support/core_ext/array/conversions'
 
 # Class: WordConnector
 #
@@ -29,36 +31,36 @@ class WordConnector
   
   def initialize(array)
     @array = array
-    
   end
 
-  # Public: #word_connector
+  # Public: #connect
   #
   # Converts an array into a string list of its contents.
   #
   # Parameters: None.
   #
   # Returns: 
-  # format_string
+  # @array, formatted.
   #
-  # State Changes: 
-  # format_string becomes a correctly formatted output string.
-
-
+  # State Changes: None
   
   def connect
-    format_string = @array.pop
-    if @array.length > 1
-      format_string.prepend(", and ")
-    else
-      format_string.prepend(" and ")
-    end #if
-    until @array.length == 1
-      format_string.prepend(", #{@array.pop}")
-    end #until
-    format_string.prepend("#{@array.pop}")
-    format_string
-  end #method
+    @array.to_sentence
+  end
+  
+  #   def connect
+  #   format_string = @array.pop
+  #   if @array.length > 1
+  #     format_string.prepend(", and ")
+  #   else
+  #     format_string.prepend(" and ")
+  #   end #if
+  #   until @array.length == 1
+  #     format_string.prepend(", #{@array.pop}")
+  #   end #until
+  #   format_string.prepend("#{@array.pop}")
+  #   format_string
+  # end #method
   
 end #class
 
